@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 class Title extends Component {
     render() {
-        return <hi>{this.props.title}</hi>
+        return <h1>{this.props.title}</h1>
     }
 }
 
