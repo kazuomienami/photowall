@@ -1,12 +1,18 @@
-import { render } from '@testing-library/react';
-import React, {Component} from 'react';
+import React from 'react';
 import Photo from './photo'
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-class Photowall extends Component {
-    render() {
-        return <div className = "photoGrid">
-            {this.props.posts.map((post, index) => <Photo key={index} post={post}/>)}
+export default function Photowall(props){
+    return <div>
+        <Link className = "addIcon" onClick ={props.navigate} to="/addPhoto"></Link>
+        <div className = "photoGrid">
+            {props.posts.map((post, index) => <Photo key={index} post={post} onRemovePhoto={props.onRemovePhoto}/>)}
         </div>
-    }
+    </div>
 }
-export default Photowall;
+
+Photowall.propTypes = {
+    posts: PropTypes.array.isRequired,
+    onRemovePhoto: PropTypes.func.isRequired
+}
