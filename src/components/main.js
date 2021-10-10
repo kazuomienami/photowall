@@ -6,11 +6,16 @@ import Title from './title';
 import {Route, Link} from 'react-router-dom';
 
 class Main extends Component {
-    constructor() {
-        super()
-        this.state = {
-            posts: [],
-        }
+    
+    state = {
+        loading: true
+    }
+
+    componentDidMount() {
+        this.props.startLoadingPost().then(() => {
+            this.setState({loading: false})
+        })
+        this.props.startLoadingComments()
     }
 
     render() {
@@ -30,7 +35,7 @@ class Main extends Component {
                     </div>
                 )}/>
                 <Route path = '/single/:id' render = {(params) => (
-                    <Single {...this.props} {...params}/>
+                    <Single loading={this.state.loading} {...this.props} {...params}/>
                 )}/>
             </div>
         )

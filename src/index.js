@@ -6,8 +6,9 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './redux/reducer';
 import App from './components/app';
-import Thunk from 'redux-thunk'
+import Thunk from 'redux-thunk';
+import {database} from './database/config';
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(Thunk))
 
 ReactDOM.render(<Provider store = {store}><BrowserRouter><App/></BrowserRouter></Provider>, document.getElementById('root'));
