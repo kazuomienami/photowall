@@ -1,47 +1,41 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import Photowall from './photowall';
 import Single from './single'
 import AddPhoto from './addPhoto';
 import Title from './title';
-import {Route, Link} from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
-class Main extends Component {
-    
-    state = {
-        loading: true
-    }
+export default function Main(props) {
 
-    componentDidMount() {
-        this.props.startLoadingPost().then(() => {
-            this.setState({loading: false})
+    const [state, setState] = useState(true)
+
+    useEffect(() => {
+        console.log("test")
+        props.startLoadingPost().then(() => {
+            setState(false)
         })
-        this.props.startLoadingComments()
-    }
+        props.startLoadingComments()
+    }, [])
 
-    render() {
-        return (
-            <div>
-                <h1>
-                    <Link to="/"><Title title="Photowall"/></Link>
-                </h1>
-                <Route exact path = '/' render={() => (
-                    <div>
-                        <Photowall {...this.props}/>
-                    </div>
-                )}/>
-                <Route path = "/addPhoto" render ={() => (
-                    <div>
-                        <AddPhoto {...this.props}/>
-                    </div>
-                )}/>
-                <Route path = '/single/:id' render = {(params) => (
-                    <Single loading={this.state.loading} {...this.props} {...params}/>
-                )}/>
-            </div>
-        )
-        
-    }
+    return (
+        <div>
+            <h1>
+                <Link to="/"><Title title="Photowall" /></Link>
+            </h1>
+            <Route exact path='/' render={() => (
+                <div>
+                    <Photowall {...props} />
+                </div>
+            )} />
+            <Route path="/addPhoto" render={() => (
+                <div>
+                    <AddPhoto {...props} />
+                </div>
+            )} />
+            <Route path='/single/:id' render={(params) => (
+                <Single loading={state} {...props} {...params} />
+            )} />
+        </div>
+    )
+
 }
-
-
-export default Main;
