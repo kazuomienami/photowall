@@ -10,11 +10,11 @@ export default function Main(props) {
     const [state, setState] = useState(true)
 
     useEffect(() => {
-        console.log("test")
         props.startLoadingPost().then(() => {
             setState(false)
         })
         props.startLoadingComments()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
