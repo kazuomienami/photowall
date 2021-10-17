@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function AddPhoto(props: { startAddingPost: any; history: any; }) {
 
     const handleSubmit = (e: any) => {

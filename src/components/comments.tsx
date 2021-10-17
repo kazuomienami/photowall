@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Comments(props: { startAddingComment: any; id: any; comments: any[]; }) {
 
     const handleSubmit = (e: any) => {
@@ -11,7 +9,7 @@ export default function Comments(props: { startAddingComment: any; id: any; comm
 
     return (
         <div className="comment">
-            {props.comments.map((comment: string | number | boolean | {} | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal | null | undefined, index: React.Key | null | undefined) => {
+            {props.comments.map((comment: any, index: any) => {
                 return (
                     <p key={index}> {comment} </p>
                 )

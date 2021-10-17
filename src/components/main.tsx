@@ -1,11 +1,10 @@
-import React, { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Photowall from './photowall';
 import Single from './single'
 import AddPhoto from './addPhoto';
 import Title from './title';
 import { RouteComponentProps } from 'react-router';
 import { Route, Link } from 'react-router-dom';
-import { Matching } from 'react-redux';
 
 interface Props extends RouteComponentProps<{id?: string}> {
     startLoadingPost: any
