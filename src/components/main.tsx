@@ -14,7 +14,6 @@ interface Props extends RouteComponentProps<{id?: string}> {
     startRemovePost: any
     posts: any
     comments: any
-    navigate: any
 }
 
 export default function Main(props: Props) {

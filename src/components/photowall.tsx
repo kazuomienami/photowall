@@ -2,7 +2,7 @@ import React from 'react';
 import Photo from './photo'
 import {Link} from 'react-router-dom';
 
-export default function Photowall(props: { navigate: any; posts: any[]; }){
+export default function Photowall(props: { posts: any[]; }){
     return <div>
         <Link className = "addIcon" onClick ={props.navigate} to="/addPhoto"></Link>
         <div className = "photoGrid">
