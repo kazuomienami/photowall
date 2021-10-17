@@ -1,7 +1,7 @@
 import _posts from '../data/posts'
 import {combineReducers} from 'redux'
 
-function comments(state: any={}, action: { type: any; postId: string | number; comment: any; comments: any }){
+function comments(state: any={}, action: { type: any; postId: any; comment: any; comments: any }){
     switch (action.type) {
         case 'ADD_COMMENT':
             if (!state[action.postId]) {
