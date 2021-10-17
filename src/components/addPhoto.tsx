@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function AddPhoto(props) {
+export default function AddPhoto(props: { startAddingPost: any; history: any; }) {
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         const imageLink = e.target.elements.link.value
         const description = e.target.elements.description.value

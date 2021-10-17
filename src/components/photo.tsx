@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default function Photo(props) {
+export default function Photo(props: { post: any; startRemovePost: any; index: any; history: any; comments: any; }) {
     const post = props.post; 
     return <figure className="figure">
         <Link to={`/single/${post.id}`}>

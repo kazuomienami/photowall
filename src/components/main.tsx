@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import Photowall from './photowall';
 import Single from './single'
 import AddPhoto from './addPhoto';
 import Title from './title';
+import { RouteComponentProps } from 'react-router';
 import { Route, Link } from 'react-router-dom';
+import { Matching } from 'react-redux';
 
-export default function Main(props) {
+interface Props extends RouteComponentProps<{id?: string}> {
+    startLoadingPost: any
+    startLoadingComments: any
+    startAddingPost: any
+    startRemovePost: any
+    posts: any
+    comments: any
+    navigate: any
+}
+
+export default function Main(props: Props) {
 
     const [state, setState] = useState(true)
 
